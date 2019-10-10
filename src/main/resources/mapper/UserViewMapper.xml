@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bb.standard.mapper.UserViewMapper">
+
+    <select id="selectPage" resultType="com.bb.standard.bean.entity.UserView">
+        select  * from  mmall_user_view
+        <if test="order != null and orderType != null">
+            ORDER BY ${order} ${orderType}
+        </if>
+    </select>
+</mapper>
