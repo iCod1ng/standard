@@ -1,6 +1,8 @@
 package com.bb.standard.controller;
 
+import com.bb.standard.bean.dto.OrderDTO;
 import com.bb.standard.bean.entity.User;
+import com.bb.standard.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,9 @@ public class HomeController {
     @Qualifier("OKSpringCommonsRestTemplate")
     private RestTemplate okRestTemplate;
 
+    @Autowired
+    private IOrderService orderService;
+
     @GetMapping("/http")
     public String http(){
         final String  uri = "http://localhost:8081/user/u";
@@ -32,6 +37,14 @@ public class HomeController {
         List<User> userList = Arrays.asList(result);
         userList.forEach(item-> System.out.println(item));
         return "OK";
+    }
 
+    @GetMapping("/handle")
+    public String handle(String type){
+        OrderDTO dto = new OrderDTO();
+        dto.setCode("1");
+        dto.setType(type);
+        String res = orderService.handle(dto);
+        return res;
     }
 }

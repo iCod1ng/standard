@@ -14,11 +14,21 @@
     <name>standard</name>
     <description>Demo project for Spring Boot</description>
 
+
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -73,6 +83,13 @@
             <version>1.0.29</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+
+
 
 
         <dependency>
@@ -80,6 +97,8 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.10</version>
         </dependency>
+
+
 
         <!--用于替换RestTemplate底层HTTP函数库-->
         <dependency>
