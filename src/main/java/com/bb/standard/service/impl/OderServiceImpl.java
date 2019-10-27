@@ -1,6 +1,7 @@
 package com.bb.standard.service.impl;
 
 import com.bb.standard.bean.dto.OrderDTO;
+import com.bb.standard.common.OrderEnum;
 import com.bb.standard.config.abstractclass.order.AbstractHandler;
 import com.bb.standard.config.annotation.order.HandlerContext;
 import com.bb.standard.service.IOrderService;
@@ -17,7 +18,7 @@ public class OderServiceImpl implements IOrderService {
 
     @Override
     public String handle(OrderDTO dto) {
-        AbstractHandler handler = handlerContext.getInstance(dto.getType());
+        AbstractHandler handler = handlerContext.getInstance(OrderEnum.codeOf(dto.getType()));
         return handler.handle(dto);
     }
 }

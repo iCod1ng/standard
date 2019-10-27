@@ -1,6 +1,7 @@
 package com.bb.standard.config.annotation.order;
 
 import cn.hutool.core.lang.ClassScanner;
+import com.bb.standard.common.OrderEnum;
 import com.google.common.collect.Maps;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -17,9 +18,9 @@ public class HandlerProcessor implements BeanFactoryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        Map<String,Class> handlerMap = Maps.newHashMapWithExpectedSize(3);
+        Map<OrderEnum,Class> handlerMap = Maps.newHashMapWithExpectedSize(3);
         ClassScanner.scanPackageByAnnotation(HANDLER_PACKAGE,HandlerType.class).forEach(aClass -> {
-            String type = aClass.getAnnotation(HandlerType.class).value();
+            OrderEnum type = aClass.getAnnotation(HandlerType.class).value();
             handlerMap.put(type,aClass);
         });
 
